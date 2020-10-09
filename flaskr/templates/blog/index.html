@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  {% if g.user %}
+    <h1>{% block title %}Daily Posts{% endblock %}</h1>
+    <a class="action" href="{{ url_for('blog.create') }}">New</a>
+  {% else %}
+    <h2>Please login to use Gro</h2>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% for post in posts %}
+    <article class="post">
+      <header>
+        <div>
+          {% if post['mood']==1 %}
+            <div class="postmood m1">-</div>
+          {% elif post['mood']==2 %}
+            <div class="postmood m2">-</div>
+          {% elif post['mood']==3 %}
+            <div class="postmood m3">-</div>
+          {% elif post['mood']==4 %}
+            <div class="postmood m4">-</div>
+          {% elif post['mood']==5 %}
+            <div class="postmood m5">-</div>
+          {% else %}
+            <div class="mood mblank">-</div>
+          {% endif %}
+          <h1>{{ post['date'] }}</h1>
+          <div class="about">by {{ post['username'] }}</div>
+        </div>
+        {% if g.user['id'] == post['author_id'] %}
+          <a class="action" href="{{ url_for('blog.update', id=post['id']) }}">Edit</a>
+        {% endif %}
+      </header>
+      <h3>Daily Notes</h3>
+      <p class="body">{{ post['body'] }}</p>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

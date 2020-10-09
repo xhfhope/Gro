@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Mood Tracker - April{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <br>
+  {% set count=namespace(value=0) %}
+  {% for post in posts %}
+    {% if count.value%7==0 %}
+        <br>
+    {% endif %}
+    {% set count.value = count.value+1 %}
+    {% if post==1 %}
+        <div class="mood m1"> {{count.value}} </div>
+    {% elif post==2 %}
+        <div class="mood m2"> {{count.value}} </div>
+    {% elif post==3 %}
+        <div class="mood m3"> {{count.value}} </div>
+    {% elif post==4 %}
+        <div class="mood m4"> {{count.value}} </div>
+    {% elif post==5 %}
+        <div class="mood m5"> {{count.value}} </div>
+    {% else %}
+        <div class="mood mblank"> {{count.value}} </div>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

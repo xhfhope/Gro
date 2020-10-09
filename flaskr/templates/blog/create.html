@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}New Day{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="date">Date</label>
+    <input name="date" id="date" type="date">{{ request.form['date'] }}</input>
+
+
+    <label for="body">Daily Notes</label>
+    <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
+    <br>
+    <label for="moods">Mood</label>
+      <input type="radio" id="mood1" name="mood" value="1">
+      <label for="mood1" style="color:rgb(255, 0, 0);">Very bad</label><br>
+      <input type="radio" id="mood2" name="mood" value="2">
+      <label for="mood2" style="color:rgb(248, 153, 74);">Not so good</label><br>
+      <input type="radio" id="mood3" name="mood" value="3">
+      <label for="mood3" style="color:rgb(251, 255, 0);">Okay</label>
+      <input type="radio" id="mood4" name="mood" value="4">
+      <label for="mood4" style="color:rgb(159, 235, 61);">Pretty good</label>
+      <input type="radio" id="mood5" name="mood" value="5">
+      <label for="mood5" style="color:rgb(9, 255, 0);">Great</label>
+
+      <input type="submit" value="Save">
+  </form>
+{% endblock %}
