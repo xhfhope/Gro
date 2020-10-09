@@ -6,7 +6,7 @@
 
 ### Usage
 
-Run activate inside /venv/Scripts/ to create a virtual environment
+First, run activate inside /venv/Scripts/ to create a virtual environment. Then run the following commands:
 ```
 set FLASK_APP=flaskr
 
